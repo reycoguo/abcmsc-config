@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+
+# dev环境下服务器使用8100端口
+spring:
+  profiles: dev
+  application:
+    name: abcmsc-eureka-config
+
+server:
+  port: 8100
+  
+eureka:
+  instance:
+    hostname: eureka8100.com   # 指定eureka主机
+  client:
+    register-with-eureka: false  # 是否向服务注册中心注册自己
+    fetch-registry: false  # 是否主动检索服务
+    service-url:   # 暴露服务中心地址
+      defaultZone: http://eureka8100.com:8100/eureka
+ 
+---
+
+# test环境下服务器使用8200端口
+spring:
+  profiles: test
+  application:
+    name: abcmsc-eureka-config
+
+server:
+  port: 8200
+  
+eureka:
+  instance:
+    hostname: eureka8200.com   # 指定eureka主机
+  client:
+    register-with-eureka: false  # 是否向服务注册中心注册自己
+    fetch-registry: false  # 是否主动检索服务
+    service-url:   # 暴露服务中心地址
+      defaultZone: http://eureka8200.com:8200/eureka
+           
+      
+    
+    
+    
+    
+    

@@ -1,0 +1,64 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+
+# dev环境下使用8100的Eureka，并访问mydb01数据库
+spring:
+  profiles: dev
+  application:
+    name: abcmsc-provider-depart
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///mydb01
+    username: root
+    password: 111
+
+server:
+  port: 8001
+  
+mybatis:
+  type-aliases-package: com.abc.springcloud.abcmsc.commons.beans
+  mapper-locations:
+  - classpath:com/abc/springcloud/abcmsc/provider/dept/dao/*.xml
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka    
+      
+---
+
+# test环境下使用8200的Eureka，并访问mydb02数据库
+spring:
+  profiles: test
+  application:
+    name: abcmsc-provider-depart
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///mydb02
+    username: root
+    password: 111
+
+server:
+  port: 8002
+  
+mybatis:
+  type-aliases-package: com.abc.springcloud.abcmsc.commons.beans
+  mapper-locations:
+  - classpath:com/abc/springcloud/abcmsc/provider/dept/dao/*.xml
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8200/eureka    
+      
+
+    
+    
+    
+    
