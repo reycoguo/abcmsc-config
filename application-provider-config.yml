@@ -1,9 +1,3 @@
-spring:
-  profiles:
-    active:
-    - dev
-
----
 
 # dev环境下使用8100的Eureka，并访问mydb01数据库
 spring:
